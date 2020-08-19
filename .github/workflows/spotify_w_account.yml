@@ -21,7 +21,7 @@ jobs:
         sudo apt install nodejs
         sudo apt install npm
         sudo apt install ffmpeg
-        npm install -g spotify-playlist-downloader
+        sudo npm install -g spotify-playlist-downloader
     - name: Download songs
       run: |
         mkdir downloads
