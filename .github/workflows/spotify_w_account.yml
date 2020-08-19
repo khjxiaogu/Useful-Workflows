@@ -1,0 +1,36 @@
+name: Spotify download with accounts
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: 'Spotify Playlist url'
+        required: true
+      username:
+        description: 'Spotify Username'
+        required: true
+      password:
+        description: 'Spotify Password'
+        required: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Dependencies
+      run: |
+        sudo apt install nodejs
+        sudo apt install npm
+        sudo apt install ffmpeg
+        npm install -g spotify-playlist-downloader
+    - name: Download songs
+      run: |
+        mkdir downloads
+        cd downloads
+        spotify-playlist-downloader -u ${{ github.event.inputs.username }} -p ${{ github.event.inputs.password }} -l ${{ github.event.inputs.url }}
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        # Artifact name
+        name: songs
+        # Directory containing files to upload
+        path: "./downloads"
