@@ -1,0 +1,27 @@
+name: Spotify download from list
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: 'Spotify Playlist url'
+        required: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: Set up FFMPEG
+      run: "sudo apt install ffmpeg"
+    - name: Set up downloader
+      run: "curl https://getspotifydownload.schollz.com | bash"
+    - name: Start download
+      run: | 
+        mkdir dl
+        cd dl/
+        spotifydownload -playlist ${{ github.event.inputs.url }}
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: songs
+        path: "./dl/"
