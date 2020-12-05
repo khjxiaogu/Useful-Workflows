@@ -17,4 +17,4 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: printf "${{ github.event.inputs.url }}\n\nY\n" |npx msdl
+    - run: printf "${{ github.event.inputs.url }}\n" |npx msdl
