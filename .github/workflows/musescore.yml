@@ -17,7 +17,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: "apt-get install expect"
+    - run: "sudo apt-get install expect"
     - run: >
        #! /usr/bin/expect
        spawn npx msdl
