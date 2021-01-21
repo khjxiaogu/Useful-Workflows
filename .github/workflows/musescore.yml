@@ -18,7 +18,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: |
-        echo -e 'str=(npx msdl|grep "File URL:")\ncurl -o f.zip ${str[2]}\nunzip f.zip -d ./score'>0.sh
+        echo -e 'str=($(npx msdl|grep "File URL:"))\ncurl -o f.zip ${str[2]}\nunzip f.zip -d ./score'>0.sh
         chmod +x 0.sh
         cat 0.sh
         sudo apt-get install expect
