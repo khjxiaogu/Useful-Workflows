@@ -35,4 +35,4 @@ jobs:
        # Artifact name
         name: score
         # Directory containing files to upload
-        path: "./score/"
+        path: "./"
