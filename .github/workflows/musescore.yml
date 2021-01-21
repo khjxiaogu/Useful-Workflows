@@ -20,7 +20,7 @@ jobs:
     - name: download
       timeout-minutes: 20
       run: |
-        echo -e 'str=$(npx msdl|grep "File URL:")\necho ${str[1]}\ncurl -o f.zip ${str[2]}\nunzip f.zip -d ./score'>0.sh
+        echo -e 'npx msdl>1.log'>0.sh
         chmod +x 0.sh
         cat 0.sh
         sudo apt-get install expect
@@ -28,6 +28,7 @@ jobs:
         chmod +x 1.sh
         cat 1.sh
         ./1.sh
+        cat ./1.log
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
