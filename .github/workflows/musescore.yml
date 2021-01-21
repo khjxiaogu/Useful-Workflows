@@ -22,3 +22,10 @@ jobs:
     - run: chmod +x 1.sh
     - run: cat 1.sh
     - run: ./1.sh
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+       # Artifact name
+        name: score
+        # Directory containing files to upload
+        path: "./"
