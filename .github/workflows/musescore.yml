@@ -18,7 +18,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: "sudo apt-get install expect"
-    - run: "echo -e '#!/usr/bin/expect\\nspawn npx msdl\\nexpect \"usually Ctrl+Shift+V to paste\"\\nsend \"${{ github.event.inputs.url }}\\n\"\\nexpect \"Continue? (Y/n)\"send \"Y\\\\n\"\\nexpect off'>1.sh"
+    - run: "echo -e '#!/usr/bin/expect\\nspawn npx msdl\\nexpect \"usually Ctrl+Shift+V to paste\"\\nsend \"${{ github.event.inputs.url }}\\\\n\"\\nexpect \"Continue? (Y/n)\"\\nsend \"Y\\\\n\"\\nexpect off'>1.sh"
     - run: chmod +x 1.sh
     - run: cat 1.sh
     - run: ./1.sh
