@@ -17,8 +17,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - run: "apt-get expect"
     - run: >
-       yum install expect
        #! /usr/bin/expect
        spawn npx msdl
        expect "usually Ctrl+Shift+V to paste"
