@@ -17,4 +17,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: printf "${{ github.event.inputs.url }}\rY\r" |npx msdl
+    - run: >
+       spawn npx msdl
+       expect "usually Ctrl+Shift+V to paste"
+       send "${{ github.event.inputs.url }}\n"
+       expect "Continue? (Y/n)"
+       send "Y\n"
+       expect off
