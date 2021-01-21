@@ -17,7 +17,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: |
+    - name: download
+      timeout-minutes: 20
+      run: |
         echo -e 'str=$(npx msdl|grep "File URL:")\ncurl -o f.zip ${str[2]}\nunzip f.zip -d ./score'>0.sh
         chmod +x 0.sh
         cat 0.sh
