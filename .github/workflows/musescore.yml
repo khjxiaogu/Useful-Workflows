@@ -18,11 +18,11 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: |
-        echo -e 'str=$(npx msdl|grep "File URL:"|cut -d\\':\\' -f 1)\ncurl -o f.zip $str\nunzip f.zip -d ./score'>0.sh
+        echo -e 'str=$(npx msdl|grep "File URL:"|cut -d\':\' -f 1)\ncurl -o f.zip $str\nunzip f.zip -d ./score'>0.sh
         chmod +x 0.sh
         cat 0.sh
         sudo apt-get install expect
-        echo -e '#!/usr/bin/expect\nspawn ./0.sh\nexpect "usually Ctrl+Shift+V to paste"\nsend "${{ github.event.inputs.url }}\\n"\nexpect "Continue? (Y/n)"\nsend "Y\\n\"\nexpect off'>1.sh
+        echo -e '#!/usr/bin/expect\nspawn ./0.sh\nexpect "usually Ctrl+Shift+V to paste"\nsend "${{ github.event.inputs.url }}\\n"\nexpect "Continue? (Y/n)"\nsend "Y\\n"\nexpect off'>1.sh
         chmod +x 1.sh
         cat 1.sh
         ./1.sh
