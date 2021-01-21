@@ -20,7 +20,7 @@ jobs:
     - name: download
       timeout-minutes: 20
       run: |
-        echo -e 'npx msdl>1.log'>0.sh
+        echo -e 'npx msdl 2>&1 1.log'>0.sh
         chmod +x 0.sh
         cat 0.sh
         sudo apt-get install expect
