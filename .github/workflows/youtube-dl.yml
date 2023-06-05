@@ -19,6 +19,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/checkout@v2
+      with: 
+        repository: ytdl-org/youtube-dl
     - name: Set up Python 3.10
       uses: actions/setup-python@v3
       with:
@@ -28,7 +31,7 @@ jobs:
         sudo -H pip install --upgrade youtube-dl
     - name: Download project
       run: |
-        youtube-dl --verbose -o 'dl/%(title).%(ext)' ${{ github.event.inputs.url }}
+        py ./youtube-dl --verbose -o 'dl/%(title).%(ext)' ${{ github.event.inputs.url }}
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
