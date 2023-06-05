@@ -28,7 +28,7 @@ jobs:
         sudo -H pip install --upgrade youtube-dl
     - name: Download project
       run: |
-        youtube-dl -o dl/%(title).%(ext) ${{ github.event.inputs.url }}
+        youtube-dl -o 'dl/%(title).%(ext) ${{ github.event.inputs.url }}'
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
