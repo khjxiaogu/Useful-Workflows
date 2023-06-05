@@ -32,7 +32,7 @@ jobs:
         sudo -H pip install -e ./youtube-dl
     - name: Download project
       run: |
-        python ./youtube-dl/youtube_dl --verbose -o 'dl/%(title).%(ext)' ${{ github.event.inputs.url }}
+        youtube_dl --verbose -o 'dl/%(title).%(ext)' ${{ github.event.inputs.url }}
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
